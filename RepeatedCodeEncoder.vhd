@@ -4,7 +4,7 @@ use ieee.numeric_std.all;
 
 entity RepeatedCodeEncoder is
     Generic ( L : INTEGER := 4 );
-    Port ( I : in  STD_LOGIC_VECTOR (2 ** L - 1 downto 0);
+    Port ( I : in  STD_LOGIC_VECTOR (0 to 2 ** L - 1);
            IER : out  STD_LOGIC;
            O : out  STD_LOGIC_VECTOR (2 * L - 1 downto 0));
 end RepeatedCodeEncoder;
