@@ -26,10 +26,12 @@ ARCHITECTURE behavior OF RepeatedCodeTests IS
     
     COMPONENT ErrorGeneratorForTesting is
     GENERIC ( N : integer := 8 );
-    PORT ( I : IN  STD_LOGIC_VECTOR (0 to 7);
-           EN : IN  STD_LOGIC;
-           MASK : IN  STD_LOGIC_VECTOR (0 to 7);
-           O : OUT  STD_LOGIC_VECTOR (0 to 7));
+    PORT (
+          I : IN  STD_LOGIC_VECTOR (0 to 7);
+          EN : IN  STD_LOGIC;
+          MASK : IN  STD_LOGIC_VECTOR (0 to 7);
+          O : OUT  STD_LOGIC_VECTOR (0 to 7)
+         );
     END COMPONENT;
 
    --Inputs
@@ -65,7 +67,6 @@ BEGIN
 
    -- Clock process definitions
    clock_process :process
-      variable code : STD_LOGIC_VECTOR ( 0 to 3 );
    begin
       for b in 0 to I'length - 1 loop
          I <= (others => '0');
