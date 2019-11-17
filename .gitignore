@@ -1,0 +1,11 @@
+*.html
+*.ncd
+*.xreport
+*.debug
+*.projectmgr
+*.tcl
+*.cmd
+*.xmsgs
+*.prj
+*.log
+*.lso
