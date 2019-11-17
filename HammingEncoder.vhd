@@ -27,10 +27,10 @@ begin
       if singleBitsCount = 1 then
          coded := std_logic_vector(to_unsigned(singleBitPos, coded'length));
          IER <= '0';
-         O <= (coded(0) xor coded(1) xor coded(3))
-            & (coded(0) xor coded(2) xor coded(3))
+         O <= (coded(0) xor coded(2) xor coded(3))
+            & (coded(0) xor coded(1) xor coded(3))
             & coded(3)
-            & (coded(1) xor coded(2) xor coded(3))
+            & (coded(0) xor coded(1) xor coded(2))
             & coded(2 downto 0);
       else
          IER <= '1';
