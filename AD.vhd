@@ -5,7 +5,7 @@ use IEEE.NUMERIC_STD.ALL;
 entity AD is
     Generic ( a : integer := 4);
     Port ( I : in  STD_LOGIC_VECTOR (a - 1 downto 0);
-           O : out  STD_LOGIC_VECTOR (2 ** a - 1 downto 0));
+           O : out  STD_LOGIC_VECTOR (0 to 2 ** a - 1));
 end AD;
 
 architecture Behavioral of AD is
