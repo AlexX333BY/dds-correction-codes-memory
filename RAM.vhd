@@ -7,12 +7,12 @@ entity RAM is
               ADDR_LENGTH : integer := 2);
     Port ( CLK : in  STD_LOGIC;
            WR : in  STD_LOGIC;
-           ADDR : in  STD_LOGIC_VECTOR (ADDR_LENGTH-1 downto 0);
-           DATA : inout  STD_LOGIC_VECTOR (0 to WORD_LENGTH-1));
+           ADDR : in  STD_LOGIC_VECTOR (ADDR_LENGTH - 1 downto 0);
+           DATA : inout  STD_LOGIC_VECTOR (0 to WORD_LENGTH - 1));
 end RAM;
 
 architecture Behavioral of RAM is
-   subtype WORD is STD_LOGIC_VECTOR(0 to WORD_LENGTH-1);
+   subtype WORD is STD_LOGIC_VECTOR(0 to WORD_LENGTH - 1);
    type T_RAM_DATA is array (0 to 2 ** ADDR_LENGTH - 1) of WORD;
    signal ram_data : T_RAM_DATA;
 begin
