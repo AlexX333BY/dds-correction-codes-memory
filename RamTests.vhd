@@ -46,7 +46,6 @@ BEGIN
 		wait for CLK_period/2;
    end process;
  
-
    -- Stimulus process
    stim_proc: process
    begin
@@ -59,6 +58,7 @@ BEGIN
       end loop;
       
       WR <= '0';
+      DATA <= (others => 'Z');
       for address in 0 to 2 ** 2 - 1 loop
          ADDR <= std_logic_vector(to_unsigned(address, ADDR'length));
          wait for CLK_period;

@@ -12,8 +12,8 @@ entity RAM is
 end RAM;
 
 architecture Behavioral of RAM is
-   subtype WORD is STD_LOGIC_VECTOR(0 to WORD_LENGTH - 1);
-   type T_RAM_DATA is array (0 to 2 ** ADDR_LENGTH - 1) of WORD;
+   subtype T_WORD is STD_LOGIC_VECTOR(0 to WORD_LENGTH - 1);
+   type T_RAM_DATA is array (0 to 2 ** ADDR_LENGTH - 1) of T_WORD;
    signal ram_data : T_RAM_DATA;
 begin
    Read_process : process (ram_data, WR, ADDR)
