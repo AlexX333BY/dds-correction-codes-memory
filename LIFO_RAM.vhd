@@ -20,8 +20,10 @@ architecture Behavioral of LIFO_RAM is
    signal ram_data : T_RAM_DATA;
    constant stack_last_addr : integer := 2 ** ADDR_LENGTH - 1;
    signal stack_pointer : integer range 0 to stack_last_addr;
+   signal data_out : STD_LOGIC_VECTOR(0 to WORD_LENGTH - 1);
 begin
    SP <= std_logic_vector(to_unsigned(stack_pointer, SP'length));
+   DATA <= data_out when WR = '0' else (others => 'Z');
    
    Write_process : process (CLK, WR, DATA, EN, INIT)
       variable new_stack_pointer : integer;
@@ -29,11 +31,12 @@ begin
       if INIT = '1' then
          stack_pointer <= 0;
          ram_data(0) <= (others => '0');
+         data_out <= (others => 'Z');
          DATA <= (others => 'Z');
       elsif rising_edge(CLK) then
          if EN = '1' then
             if WR = '0' then
-               DATA <= ram_data(stack_pointer);
+               data_out <= ram_data(stack_pointer);
                if stack_pointer > 0 then
                   stack_pointer <= stack_pointer - 1;
                end if;
